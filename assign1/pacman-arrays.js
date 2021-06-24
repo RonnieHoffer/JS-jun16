@@ -1,9 +1,9 @@
-const ghosts = {inky: 'Cyan', blinky: 'Red', pinky: 'Pink', clyde: 'Orange'};
-    console.log(ghosts);
-    console.log(ghosts.inky); // => 'Cyan'
-    console.log(ghosts.blinky); // => 'Red'
-    console.log(ghosts['inky']); // => 'Cyan'
-    console.log(ghosts['blinky']); // => 'Red'
+const ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde'];
 
-    const ghostName = 'clyde';
-    console.log(ghosts[ghostName]);
+console.log(`There are ${ghosts.length} ghosts`);
+console.log('Their names are: ');
+console.log(ghosts[0]);
+console.log(ghosts[1]);
+console.log(ghosts[2]);
+console.log(ghosts[3]);
+
