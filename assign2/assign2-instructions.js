@@ -117,7 +117,7 @@ var transactions = [
   */
   var totalTransactions = transactions.length;
   
-  console.log( 'The total number of transactions is:', totalTransactions );
+  // console.log( 'The total number of transactions is:', totalTransactions );
   
   
   // --------------------------------------------------
@@ -133,12 +133,14 @@ var transactions = [
   
   // iterate through transactions
   // if the type is 'sale', add 1 to numSales
-  
+
   transactions.forEach(function(transaction) {
-    if (transaction.type === 'sale') {
+    if(transaction.type === 'sale') {
       numSales++;
     }
   });
+
+  // console.log('The total number of sales is: ', numSales);
   
   /*
     Hey, welcome to the first question!
@@ -168,6 +170,14 @@ var transactions = [
     Calculate the total number of 'purchases'.
   */
   var numPurchases = 0;
+
+  transactions.forEach(function(transaction) {
+    if(transaction.type === 'purchase') {
+      numPurchases++;
+    }
+  });
+
+  // console.log('The total number of purchases is: ', numPurchases);
   
   
   // --------------------------------------------------
@@ -179,7 +189,17 @@ var transactions = [
     HINT(S):
     - Don't forget that 'purchases' can also be made in 'cash'!
   */
-  var numCashSales 
+  var numCashSales = 0;
+
+  transactions.forEach(function(transaction) {
+    if(transaction.type === 'sale') {
+      if(transaction.paymentMethod === 'cash') {
+        numCashSales++;
+      }      
+    }
+  });
+
+  // console.log('The total number of cash sales is: ', numCashSales);
   
   // --------------------------------------------------
   // QUESTION 04
@@ -191,7 +211,17 @@ var transactions = [
     - Make sure to exclude any 'sales' made by 'credit'!
   */
   
-  var creditPurchases 
+  var numCreditPurchases = 0;
+  
+  transactions.forEach(function(transaction) {
+    if(transaction.type === 'purchase') {
+      if (transaction.paymentMethod === 'credit') {
+        numCreditPurchases++;
+      }      
+    }
+  });
+
+  // console.log('The total number of credit purchases is: ', numCreditPurchases);
   
   // --------------------------------------------------
   // QUESTION 05
@@ -206,6 +236,14 @@ var transactions = [
     - This array is allowed to contain duplicate values.
   */
   var uniqueVendors = [];
+
+  transactions.forEach(function(transaction) {
+    if ('vendor' in transaction) {
+      uniqueVendors.push(transaction.vendor)
+    }
+  });
+
+  // console.log ('The list of vendors is : ', uniqueVendors)
 
   
 
@@ -223,9 +261,19 @@ var transactions = [
     - Make sure that the resulting array *does not* include any duplicates.
   */
   
-  var uniqueCustomers 
-  
+  var uniqueCustomers = [];
 
+  transactions.forEach(function(transaction) {
+    if ('customer' in transaction) {
+      if (!(uniqueCustomers.includes(transaction.customer))) {
+        uniqueCustomers.push(transaction.customer)
+      }
+    }
+  });
+
+  // console.log ('The list of customers is : ', uniqueCustomers);
+
+  
   
   // --------------------------------------------------
   // QUESTION 07
@@ -240,7 +288,20 @@ var transactions = [
     - There may be more than 1 'sale' that includes 5 or more items.
     - Individual transactions do not have either `name` or `numItems` properties, we'll have to add them to the output.
   */
-  var bigSpenders;
+  var bigSpenders = [];
+  i = 0;
+
+  transactions.forEach(function(transaction) {
+    if (transaction.type === 'sale') {
+      if (transaction.items.length >= 5) {
+        a = {name: transaction.customer, numItems: transaction.items.length};
+        bigSpenders.push(a);
+      }
+    }
+  });
+
+  console.log('The transactions which include 5 or more items are: ', bigSpenders);
+
   
 
   
