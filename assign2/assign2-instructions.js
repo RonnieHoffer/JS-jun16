@@ -117,7 +117,7 @@ var transactions = [
   */
   var totalTransactions = transactions.length;
   
-  // console.log( 'The total number of transactions is:', totalTransactions );
+  console.log( 'The total number of transactions is:', totalTransactions );
   
   
   // --------------------------------------------------
@@ -140,7 +140,7 @@ var transactions = [
     }
   });
 
-  // console.log('The total number of sales is: ', numSales);
+  console.log('The total number of sales is: ', numSales);
   
   /*
     Hey, welcome to the first question!
@@ -177,7 +177,7 @@ var transactions = [
     }
   });
 
-  // console.log('The total number of purchases is: ', numPurchases);
+  console.log('The total number of purchases is: ', numPurchases);
   
   
   // --------------------------------------------------
@@ -199,7 +199,7 @@ var transactions = [
     }
   });
 
-  // console.log('The total number of cash sales is: ', numCashSales);
+  console.log('The total number of cash sales is: ', numCashSales);
   
   // --------------------------------------------------
   // QUESTION 04
@@ -221,7 +221,7 @@ var transactions = [
     }
   });
 
-  // console.log('The total number of credit purchases is: ', numCreditPurchases);
+  console.log('The total number of credit purchases is: ', numCreditPurchases);
   
   // --------------------------------------------------
   // QUESTION 05
@@ -243,7 +243,7 @@ var transactions = [
     }
   });
 
-  // console.log ('The list of vendors is : ', uniqueVendors)
+  console.log ('The list of vendors is : ', uniqueVendors)
 
   
 
@@ -271,7 +271,7 @@ var transactions = [
     }
   });
 
-  // console.log ('The list of customers is : ', uniqueCustomers);
+  console.log ('The list of customers is : ', uniqueCustomers);
 
   
   
@@ -315,8 +315,22 @@ var transactions = [
     HINT(S):
     - Transactions don't have 'prices', but their 'items' do!
   */
-  var sumSales;
+  var sumSales = 0;
+  var a = 0;
+  
+  transactions.forEach(function(transaction) {
+    if (a === 0) {
+      if(transaction.type === 'sale') {
+        a = transaction
+      }
+    }
+  });
+  
+  a.items.forEach(function(item) {
+    sumSales += item.price   
+  });
 
+  console.log('The sum of the first sale is:  $', sumSales);
   
   
   // --------------------------------------------------
@@ -330,8 +344,19 @@ var transactions = [
     - Make sure to include 'price' information from *all* purchases.
   */
   
-  var sumPurchases;
+  var sumPurchases = 0;
 
+  transactions.forEach(function(transaction) {
+    if(transaction.type === 'purchase') {
+      transaction.items.forEach(function(item) {
+        sumPurchases -= item.price
+      });
+    }
+  });
+
+  console.log('The sum of all items purchased is:  $', sumPurchases);
+  // console.log('The sum of all items purchased is:  $', sumPurchases.toFixed(2));
+  // console.log('The sum of all items purchased is:  $', Math.round(sumPurchases * 1e2)/1e2);
   
   
   // --------------------------------------------------
@@ -347,7 +372,15 @@ var transactions = [
     HINT(S):
     - Unlike 'QUESTION 08' and 'QUESTION 09', here we're interested in both 'sale' and 'purchase' transactions.
   */
-  var netProfit;
+  var netProfit = 0;
+
+  transactions.forEach(function(transaction) {
+    transaction.items.forEach(function(item) {
+      netProfit += item.price      
+    });
+  });
+
+  console.log('The net profit is:  $', netProfit);
 
   
   
@@ -361,8 +394,17 @@ var transactions = [
     HINTS:
     - The result of this calculation should be a number (not an array, object, or other data type).
   */
-  var mostItems;
+  var mostItems = 0;
   
+  transactions.forEach(function(transaction) {
+    if (transaction.type === 'sale') {
+      if (transaction.items.length > mostItems) {
+        mostItems = transaction.items.length
+      }
+    }
+  });
+
+  console.log('The largest number of items sold in a single sale is ', mostItems);
 
 
   // --------------------------------------------------
@@ -371,4 +413,19 @@ var transactions = [
   /*
     Calculate the sum of the 'purchase' with the fewest items.
   */
-  var sumOfSmallestPurchase;
+  var sumOfSmallestPurchase = 0;
+  var numItems = 0;
+
+  transactions.forEach(function(transaction) {
+    if (transaction.type === 'purchase') {
+      if (numItems === 0 || transaction.items.length < numItems) {
+        numItems = transaction.items.length
+        sumOfSmallestPurchase = 0;
+        transaction.items.forEach(function(item) {
+          sumOfSmallestPurchase += item.price
+        });
+      }
+    }
+  });
+
+  console.log('The sum of the purchase with the smallest number of items is:  $', sumOfSmallestPurchase);
