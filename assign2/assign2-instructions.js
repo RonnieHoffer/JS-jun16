@@ -117,7 +117,7 @@ var transactions = [
   */
   var totalTransactions = transactions.length;
   
-  console.log( 'The total number of transactions is:', totalTransactions );
+  console.log( '0.  The total number of transactions is:', totalTransactions );
   
   
   // --------------------------------------------------
@@ -140,7 +140,7 @@ var transactions = [
     }
   });
 
-  console.log('The total number of sales is: ', numSales);
+  console.log('1.  The total number of sales is: ', numSales);
   
   /*
     Hey, welcome to the first question!
@@ -177,7 +177,7 @@ var transactions = [
     }
   });
 
-  console.log('The total number of purchases is: ', numPurchases);
+  console.log('2.  The total number of purchases is: ', numPurchases);
   
   
   // --------------------------------------------------
@@ -199,7 +199,7 @@ var transactions = [
     }
   });
 
-  console.log('The total number of cash sales is: ', numCashSales);
+  console.log('3.  The total number of cash sales is: ', numCashSales);
   
   // --------------------------------------------------
   // QUESTION 04
@@ -221,7 +221,7 @@ var transactions = [
     }
   });
 
-  console.log('The total number of credit purchases is: ', numCreditPurchases);
+  console.log('4.  The total number of credit purchases is: ', numCreditPurchases);
   
   // --------------------------------------------------
   // QUESTION 05
@@ -243,7 +243,7 @@ var transactions = [
     }
   });
 
-  console.log ('The list of vendors is : ', uniqueVendors)
+  console.log ('5.  The list of vendors is : ', uniqueVendors)
 
   
 
@@ -271,7 +271,7 @@ var transactions = [
     }
   });
 
-  console.log ('The list of customers is : ', uniqueCustomers);
+  console.log ('6.  The list of customers is : ', uniqueCustomers);
 
   
   
@@ -300,7 +300,7 @@ var transactions = [
     }
   });
 
-  console.log('The transactions which include 5 or more items are: ', bigSpenders);
+  console.log('7.  The transactions which include 5 or more items are: ', bigSpenders);
 
   
 
@@ -330,7 +330,7 @@ var transactions = [
     sumSales += item.price   
   });
 
-  console.log('The sum of the first sale is:  $', sumSales);
+  console.log('8.  The sum of the first sale is:  $', sumSales);
   
   
   // --------------------------------------------------
@@ -354,7 +354,7 @@ var transactions = [
     }
   });
 
-  console.log('The sum of all items purchased is:  $', sumPurchases);
+  console.log('9.  The sum of all items purchased is:  $', sumPurchases);
   // console.log('The sum of all items purchased is:  $', sumPurchases.toFixed(2));
   // console.log('The sum of all items purchased is:  $', Math.round(sumPurchases * 1e2)/1e2);
   
@@ -380,7 +380,7 @@ var transactions = [
     });
   });
 
-  console.log('The net profit is:  $', netProfit);
+  console.log('10.  The net profit is:  $', netProfit);
 
   
   
@@ -404,7 +404,7 @@ var transactions = [
     }
   });
 
-  console.log('The largest number of items sold in a single sale is ', mostItems);
+  console.log('11.  The largest number of items sold in a single sale is ', mostItems);
 
 
   // --------------------------------------------------
@@ -428,4 +428,4 @@ var transactions = [
     }
   });
 
-  console.log('The sum of the purchase with the smallest number of items is:  $', sumOfSmallestPurchase);
+  console.log('12.  The sum of the purchase with the smallest number of items is:  $', sumOfSmallestPurchase);

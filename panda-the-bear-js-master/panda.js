@@ -48,11 +48,41 @@ document.addEventListener('DOMContentLoaded', () => {
         element.setAttribute('style', 'background-color: red');
     });
 
-    // document.getElementsByName('message')[0].placeholder = "state your business";
-    // document.getElementsByName('name')[0].value = "your nemesis";
-    // document.getElementsByName('email')[0].value = 'koalathebear@gmail.com';
-    // document.getElementsByName('submit')[0].value = 'En garde!';
-
-    // Use a "forEach" approach for all of these".
+    // const forms = document.querySelectorAll('form');
+    // const form = forms[0];
     
+    // Array.from(form.elements).forEach((input) => {
+    //   console.log(input);
+    // });
+
+
+
+    form = document.querySelector('form');
+        console.log(form);
+        console.log(form.elements);
+    formElements = Array.from(form.elements);
+        console.log(formElements);
+    formElements.forEach(function(e) {
+        if (e.name === 'message') {
+            e.placeholder = 'state your business'
+        }
+        if (e.name === 'name') {
+            e.value = 'your nemesis'
+        }
+        if (e.name === 'email') {
+            e.value = 'koalathebear@gmail.com'
+        }
+        if (e.name === 'submit') {
+            e.value = 'En garde!'
+            e.disabled = true
+        }
+    });
+
+        console.log(formElements);
+
+    // var sideBarInfo = document.querySelector('aside');
+    //     console.log(sideBarInfo);
+    // var matches = sideBarInfo.querySelectorAll('bio-info');
+    //     console.log(matches);
+
 });
